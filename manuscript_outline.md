@@ -105,8 +105,8 @@ Full methods specification in [`multistate_markov/METHODS.md`](../multistate_mar
 > ![Figure 1 — Continental dropout funnel](figures/fig1_continent_dropout_funnel.png)
 > **Figure 1.** Continent-average cascade across the 38 latest DHS surveys per country. Cumulative percentage at each step with inter-step losses annotated. The cascade leaks fastest at DPT2→DPT3 (−6.8 pp).
 
-> ![Figure 2 — Sankey-style cascade flow](figures/fig_a1_sankey_cascade.png)
-> **Figure 2.** Continental dropout flow. Blue = children remaining on schedule. Red = children leaked at or before that step. Visualizes the cumulative cohort attrition rather than just the step-level percentages.
+> ![Figure 2 — Waterfall cascade flow](figures/fig_a1_sankey_cascade.png)
+> **Figure 2.** Continental dropout flow. Blue = children remaining on schedule. Red = children leaked at that step. Waterfall chart showing how the birth cohort is progressively depleted at each vaccine contact.
 
 - Mean BCG coverage 88.1% — i.e. ~12% of all children never enter the EPI system at all.
 - Mean dose 1: 85.9% (small step-down from BCG; 95% of BCG children come back for dose 1).
@@ -142,8 +142,8 @@ Full methods specification in [`multistate_markov/METHODS.md`](../multistate_mar
 > ![Figure 6 — Regional cascade comparison](figures/fig_a2_regional_bars.png)
 > **Figure 6.** Cascade by region (latest survey per country, mean ± 1 SD). East and Southern Africa show flatter cascades and lower variance; West and Central Africa show steeper cascades and higher between-country variance.
 
-- East Africa (Burundi, Ethiopia, Kenya, Madagascar, Rwanda, Tanzania, Uganda, Comoros): mean DPT3 ~75%.
-- Southern Africa (Eswatini, Lesotho, Malawi, Mozambique, Namibia, South Africa, Zambia, Zimbabwe): mean DPT3 ~76%.
+- East Africa (Burundi, Ethiopia, Kenya, Madagascar, Rwanda, Tanzania, Uganda, Comoros): mean DPT3 ~82%.
+- Southern Africa (Eswatini, Lesotho, Malawi, Mozambique, Namibia, South Africa, Zambia, Zimbabwe): mean DPT3 ~82%.
 - West Africa (Benin, Burkina Faso, Côte d'Ivoire, Gambia, Ghana, Guinea, Liberia, Mali, Mauritania, Niger, Nigeria, Senegal, Sierra Leone, Togo): high between-country variance — Burkina Faso 89% next to Nigeria 38%.
 - Central Africa (Angola, Cameroon, Chad, Congo, DR Congo, Gabon, São Tomé, Sudan): mean DPT3 ~63% — the lowest of the four regions.
 
@@ -161,7 +161,7 @@ Full methods specification in [`multistate_markov/METHODS.md`](../multistate_mar
 ### 3.6 Change over time
 
 > ![Figure 9 — Cascade evolution over time (selected countries)](figures/fig5_cascade_over_time.png)
-> **Figure 9.** Cascade evolution for the 8 countries with the most DHS rounds. Reveals whether countries are improving (Burkina Faso, Senegal), stagnating, or backsliding.
+> **Figure 9.** Cascade evolution for the 8 countries with the most DHS rounds. Reveals whether countries are improving (Senegal, Ghana), stagnating, or backsliding.
 
 > ![Figure 10 — Long-run change in DPT3 coverage](figures/fig_a4_change_over_time.png)
 > **Figure 10.** For each country with ≥3 DHS rounds, percentage-point change in DPT3 coverage between earliest and latest DHS in panel. Ranked. Identifies improvers vs decliners.
@@ -179,12 +179,12 @@ The descriptive cascade analysis (§ 3.1–3.6) is informative but unprincipled 
 > ![Figure 11 — Continent-level Markov diagram](figures/ms_fig5_markov_diagram.png)
 > **Figure 11.** Five-state Markov chain with Bayes-shrunk continent-mean transition probabilities (blue arrows) and dropout per step (red arrows). The chain leaks gradually rather than at a single break point. Transition probabilities are: Start→BCG 90.1%, BCG→Dose 1 95.5%, Dose 1→Dose 2 93.0%, Dose 2→Dose 3 89.2%, Dose 3→MCV1 88.5%.
 
-The shrunk continent-mean transitions confirm and refine the descriptive cascade numbers. The smallest conditional probability — and therefore the largest mid-cascade leak — is Dose 2→Dose 3 (89.2 %), consistent with the descriptive analysis.
+The shrunk continent-mean transitions confirm and refine the descriptive cascade numbers. The smallest conditional probability is Dose 3→MCV1 (88.5%), narrowly below Dose 2→Dose 3 (89.2%). Note that in the descriptive marginal cascade (§3.1), DPT2→DPT3 shows the largest absolute step-down (−6.8 pp) because it operates on a larger entering cohort; the Markov transition probability is a conditional measure and the two metrics are complementary.
 
 #### 3.7.2 Country-specific transitions and shrinkage
 
 > ![Figure 12 — Per-country forest plot, raw vs shrunk](figures/ms_fig1_forest_raw_vs_shrunk.png)
-> **Figure 12.** Per-country transition probabilities at each of the five Markov transitions. Orange dots = raw country estimates; blue dots with 95% CIs = Bayes-shrunk posterior means. Red dashed line = continent posterior mean. Sorted by shrunk estimate within each panel.
+> **Figure 12.** Per-country transition probabilities at each of the five Markov transitions. Blue dots = raw country estimates; blue dots with 95% CIs = Bayes-shrunk posterior means. Red dashed line = continent posterior mean. Sorted by shrunk estimate within each panel.
 
 > ![Figure 13 — Per-country transition heatmap](figures/ms_fig4_transition_heatmap.png)
 > **Figure 13.** Heatmap of Bayes-shrunk transition probabilities. Rows = countries (sorted by Dose 3→MCV1); columns = five transitions; green = high completion. The diagonal pattern shows countries that perform well on entry also tend to perform well on completion — a positive correlation we exploit as a sensitivity discussion below.
